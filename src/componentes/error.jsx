@@ -1,6 +1,6 @@
 function Error(){
     return (
-        <h2>Se registro un o unos Error</h2>
+        <h2>Se registro un Error</h2>
     )
 }
 
