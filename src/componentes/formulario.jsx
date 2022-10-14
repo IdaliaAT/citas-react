@@ -1,63 +1,54 @@
-import React from "react";
 const Formulario =() =>{
-/*    return (
-        <div className="md:w-1/2 mx-5">
+  return (
+      <div className="md:w-1/2 lg:w-2/5 mx-5">
         <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
-        <p className="mt-5 text-center text-lg">Añade Pacientes<span className="text-indigo-600 font-bold">Administrarlos</span></p>
-        </div>
-*/
-        return (
-            <div className="md:w-1/2 mx-5">
-          <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
-            <p className="mt-5 text-center text-lg">Añade Pacientes
-            <span className="text-red-500">Administrarlos</span></p>
-            <form className="formulario"
-              onSubmit={ev => {
-                ev.preventDefault();
-                
-              }}
-            >
-              <label htmlFor="nombre">Nombre Paciente</label><br />
-              <input
-                id="nombre"
-                name="nombre"
-                type="text"
-                placeholder="Nombre completo.."
-                
-              /><br />
-        
-              <label htmlFor="email">Correo Electronico</label><br />
-              <input
-                id="name"
-                name="email"
-                type="email"
-                placeholder="Correo electrónico.."
-                
-                /><br />
+        <p className="mt-5 text-center text-lg">
+        Añade Pacientes<br/>
+        <span className="text-indigo-600 font-bold">Administrarlos</span></p>
 
-                <label htmlFor="fecha">Fecha de Cita</label><br />
-                <input
-                id="fecha"
-                name="fecha"
-                type="date"
-        
-      /><br />
+        <form className="bg-slate-50 rounded-lg py-10 px-5 mb-10 shadow-md" onSubmit={ev => { ev.preventDefault(); }}>
 
-      <label htmlFor="hora">Hora de Cita</label><br />
+      <label htmlFor="mascota" className="block uppercase font-bold text-gray-700 ">Nombre Paciente</label>
+      <input
+        id="mascota"
+        type="text"
+        placeholder="nombre mascota"
+className="border-2 w-full p-2 w-full p-2 placeholder-gray-600 rounded-md"
+
+/>
+      
+      <label htmlFor="email" className="block uppercase font-bold text-gray-700">Correo Electronico</label>
+      <input
+        id="name"
+        name="email"
+        type="email"
+        placeholder="Correo electrónico"
+                
+        />
+
+      <label htmlFor="fechacita" className="block uppercase font-bold text-gray-700 ">Fecha de cita</label>
+        <input
+          id="fecha"
+          name="fecha"
+          type="date"
+        
+      />
+
+      <label htmlFor="hora" className="block uppercase font-bold text-gray-700 ">Hora de Cita</label><br />
       <input
         id="hora"
         name="hora"
         type="time"
         
-      /><br />
+      />
 
-      <label>Sintomas</label><br />
+      <label htmlFor="alta" className="block uppercase font-bold text-gray-700 ">Alta</label><br />
       <textarea
         id="sintomas"
         name="sintomas"
         placeholder="Sintomas que presenta.."
         
-         /><br />
+         />
       <input
         name="registraCita"
         type="submit"
