@@ -1,6 +1,6 @@
 function Header(){
     return(
-        <h1>Hola, es mi primer componente y estoy en el header</h1>
+        <h1 className="font-black text-center mx-auto text-5xl md:w-2/3">Seguimiento de Pacientes<span className="text-indigo-600">Veterinaria</span></h1>
     )
 }
 

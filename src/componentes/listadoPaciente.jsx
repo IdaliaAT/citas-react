@@ -1,7 +1,7 @@
-function ListadoPaciente(){
+function ListadoPacientes(){
     return(
         <h2>Listado de Pacientes</h2>
     )
 }
 
-export default ListadoPaciente;
+export default ListadoPacientes;

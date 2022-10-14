@@ -7,13 +7,13 @@ import Paciente from "./componentes/paciente.jsx"
 function App() {
 
   return (
-    <>
+    <div className="container mx-auto mt-15">
       <Header />
       <ListadoPaciente/>
       <Error/>
       <Formulario/>
       <Paciente/>
-    </>
+    </div>
   )
 }
 export default App;
