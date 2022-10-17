@@ -7,7 +7,7 @@ import Error from "./componentes/error.jsx"
 function App() {
 
   return (
-    <div className="container mx-auto mt-15">
+    <div className="container mx-auto">
       <Header />
       <Formulario/>
       <ListadoPaciente/>

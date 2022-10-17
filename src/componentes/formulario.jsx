@@ -1,13 +1,32 @@
-const Formulario =() =>{
+//hook es una funcionalidad que permite cambiar estados sin requerir declarar clases. Siempre deben de colocar arriba, antes del return (que es como el body en javascript)
+
+import { useState, useEffect } from "react";
+
+//used state estado de algun componente de mi proyecto. Puede ser de cada componente o pueden compartir estado entre uno y otro.
+function Formulario (){
+  const [mascota, setMascota]=useState('');
+  const [propietario, setPropietario]=useState('');
+  const [telefono, setTelefono]=useState('');
+  const [email, setEmail]=useState('');
+  const [fechacita, setFechacita]=useState('');
+  const [hora, setHora]=useState('');
+  const [alta, setAlta]=useState('');
+
+  const validacionFormulario=(e)=>{
+    e.preventDefault;
+    if([mascota,propietario,telefono,email,fechacita,hora,alta].includes('')){
+      console.log('Hay al menos un campo vacío')
+    }
+  }
+
   return (
-    <div className="md:w-1/2 lg:w-2/5 mx-5">
+    <div className="md:w-1/2 mx-5 lg:w-2/5">
         <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
         <p className="mt-5 text-center text-lg mb-10">Agregar Nuevos Pacientes<br/>
-        <span className="text-indigo-600 font-bold">Administrarlos</span></p>
+        <span className="text-indigo-400 font-bold">Administrarlos</span></p>
 
-        <form className="bg-slate-50 rounded-lg py-10 px-5 mb-10 shadow-md" onSubmit={(ev) => {
-          ev.preventDefault();
-        }}>
+        <form className="bg-slate-50 rounded-lg py-10 px-5 mb-10 shadow-md" 
+        onSubmit={validacionFormulario}>
           
         <div>
           <label htmlFor="mascota" className="block uppercase font-bold text-gray-700">Nombre Paciente</label>
@@ -15,7 +34,10 @@ const Formulario =() =>{
           id="mascota"
           type="text"
           placeholder="Nombre de mascota"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"/>
+          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
+          onChange={(e)=>setMascota(e.target.value)}
+          />
+          
         </div>
 
         <div>
@@ -24,7 +46,9 @@ const Formulario =() =>{
           id="propietario"
           type="text"
           placeholder="Nombre del propietario"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"/>
+          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
+          onChange={(e)=>setPropietario(e.target.value)}/>
+          
         </div>
 
         <div>
@@ -33,7 +57,9 @@ const Formulario =() =>{
           id="telefono"
           type="numero"
           placeholder="10 digitos"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"/>
+          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
+          onChange={(e)=>setTelefono(e.target.value)}/>
+          
         </div>        
       
         <div>
@@ -42,7 +68,9 @@ const Formulario =() =>{
           id="email"
           type="email"
           placeholder="email@hotmail.com"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"/>
+          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
+          onChange={(e)=>setEmail(e.target.value)}/>
+          
         </div>
 
         <div>
@@ -50,7 +78,9 @@ const Formulario =() =>{
           <input
           id="fecha"
           type="date"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"/>
+          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
+          onChange={(e)=>setFechacita(e.target.value)}/>
+          
         </div>
         
         <div>
@@ -59,7 +89,10 @@ const Formulario =() =>{
           id="hora"
           name="hora"
           type="time"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"/>          
+          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
+          onChange={(e)=>setHora(e.target.value)
+          }  
+          />        
         </div>
         
         <div>
@@ -68,16 +101,16 @@ const Formulario =() =>{
           id="sintomas"
           name="sintomas"
           placeholder="Sintomas que presenta la mascota"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"/>
+          className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
+          onChange={(e)=>setAlta(e.target.value)}/>
+          
         </div>
-        
+     
         <div>
-          <button type="submit" className="btn btn-success w-100 d-block">
-          <input
+          <input type="submit" className="bg-indigo-500 text-white font-bold uppercase hover:bc-indigo-700 cursor-pointer transition color"
           name="registraCita"
-          type="submit"
-          value="Registrar Cita" />
-          </button>
+          value="Registrar Cita"
+          />
         </div>
         
       </form>
