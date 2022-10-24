@@ -1,9 +1,8 @@
 //hook es una funcionalidad que permite cambiar estados sin requerir declarar clases. Siempre deben de colocar arriba, antes del return (que es como el body en javascript)
 import { useState, useEffect } from "react";
 import Error from "./error.jsx";
-
 //used state estado de algun componente de mi proyecto. Puede ser de cada componente o pueden compartir estado entre uno y otro.
-function Formulario ({pacientes, setPacientes}){
+function Formulario ({pacientes, setPacientes, paciente, setPaciente}){
   const [mascota, setMascota]=useState('');
   const [propietario, setPropietario]=useState('');
   const [telefono, setTelefono]=useState('');
@@ -14,6 +13,12 @@ function Formulario ({pacientes, setPacientes}){
   const [alta, setAlta]=useState('');
   const [error, setError]=useState(false);
 
+  const generarId = () =>{
+    const random = Math.random().toString(36)
+    const fecha = Date.now().toString(36)
+    return random + fecha;
+  }
+
   const validacionFormulario=(e)=>{
     e.preventDefault();
     if([mascota, propietario, telefono, email, fechacita, hora, alta, sintomas].includes('')){
@@ -21,9 +26,19 @@ function Formulario ({pacientes, setPacientes}){
       setError(true)
       return;
     }
+
     setError(false);
     const objPaciente={mascota, propietario, telefono, email, fechacita, hora, alta, sintomas}
-    setPacientes([...pacientes,objPaciente])
+      if(paciente.id){
+        objPaciente.id = paciente.id
+        const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objPaciente:pacienteState)
+        setPacientes(pacientesActualizados)
+        setPaciente({})
+
+    }else{
+      objPaciente.id=generarId();
+      setPacientes([...pacientes,objPaciente])
+    }
     setMascota('');
     setPropietario('');
     setTelefono('');
@@ -37,7 +52,7 @@ function Formulario ({pacientes, setPacientes}){
   return (
     <div className="md:w-1/2 mx-5 lg:w-2/5">
         <h2 className="font-black text-3xl text-center">Registro de Pacientes</h2>
-        <p className="text-xl text-center mt-5 mb-10">Añade Nuevos Pacientes {""}<span className="text-indigo-600 font-bold">Admisión</span></p>
+        <p className="mt-5 text-center text-lg mb-10">Añade Nuevos Pacientes {""}<span className="text-indigo-400 font-bold">Admisión</span></p>
 
         <form className="bg-slate-50 rounded-lg py-10 px-5 mb-10 shadow-md" 
         onSubmit={validacionFormulario}>
@@ -47,7 +62,7 @@ function Formulario ({pacientes, setPacientes}){
           }
 
         <div>
-          <label htmlFor="mascota" className="block uppercase font-bold text-gray-700">Nombre Paciente</label>
+          <label htmlFor="mascota" className="block uppercase font-bold text-gray-700">Nombre de Mascota</label>
           <input
           id="mascota"
           type="text"
@@ -134,7 +149,7 @@ function Formulario ({pacientes, setPacientes}){
           value={sintomas}/>
         </div>
 
-          <input type="submit" className="bg-indigo-500 text-white font-bold hover:bg-indigo-700 cursor-pointer transition-colors p-2 rounded-md;" value={'Agregrar'}/>
+          <input type="submit" className="bg-indigo-500 rounded-md text-white font-bold hover:bg-indigo-700 cursor-pointer transition-colors p-2 rounded-md;" value={paciente.id ? 'Editar paciente' : 'Agregar paciente'}/>
     
       </form>
     </div>
