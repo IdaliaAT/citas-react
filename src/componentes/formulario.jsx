@@ -19,6 +19,11 @@ function Formulario ({pacientes, setPacientes, paciente, setPaciente}){
     return random + fecha;
   }
 
+  useEffect(()=>{
+    console.log(paciente)
+  },[paciente])
+
+
   const validacionFormulario=(e)=>{
     e.preventDefault();
     if([mascota, propietario, telefono, email, fechacita, hora, alta, sintomas].includes('')){
@@ -131,7 +136,7 @@ function Formulario ({pacientes, setPacientes, paciente, setPaciente}){
         <div>
           <label htmlFor="alta" className="block uppercase font-bold text-gray-700 ">Alta</label>
           <input
-          id="fecha"
+          id="alta"
           type="date"
           className="border-2 w-full p-2 mt-2 placeholder-gray-600 rounded-md"
           onChange={(e)=>setAlta(e.target.value)}
