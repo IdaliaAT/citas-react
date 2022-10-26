@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import Paciente from "./paciente.jsx"
 
 function ListadoPaciente({pacientes, setPaciente, eliminarPaciente}){
     
+useEffect(()=>{
+    if (pacientes.length > 0)
+    console.log("Hay un nuevo paciente")
+},[pacientes])
+
     return(
         <div className="md:w-1/2 lg:w-3/5 overflow-y-scroll md:h-screen">
         <h2 className="font-black text-3xl text-center">Listado de Pacientes</h2>
