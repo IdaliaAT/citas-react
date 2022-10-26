@@ -2,7 +2,7 @@ import Header from "./componentes/header.jsx"
 import ListadoPaciente from "./componentes/listadoPaciente.jsx"
 import Formulario from "./componentes/formulario.jsx"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 
@@ -14,6 +14,18 @@ function App() {
     setPacientes(pacientesActualizados)
 
   }
+  useEffect(()=>{
+    const obtenerLS=()=>{
+    const registrosLS = JSON.parse(localStorage.getItem('pacientes'))??[]
+    setPacientes(registrosLS)
+    }
+    obtenerLS();
+  },[])
+
+useEffect(()=>{
+  localStorage.setItem('pacientes',JSON.stringify(pacientes))
+},[pacientes])
+
 
   return (
     <div className="container mx-auto mt-15">
