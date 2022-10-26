@@ -1,3 +1,4 @@
+import {useEffect} from "react"
 
 function Paciente({paciente, setPaciente, eliminarPaciente}){
     const {mascota,propietario,telefono,email,fechacita,hora,alta,sintomas,id}=paciente
@@ -7,6 +8,11 @@ function Paciente({paciente, setPaciente, eliminarPaciente}){
             eliminarPaciente(id)
         }
     }
+
+    useEffect(()=>{
+        console.log('El componente esta listo')
+      },[])
+
     return (
         <div className= "bg-slate-50 shadow-md mx-5 px-5 rounded-md">
             <p className="font-bold text-gray-700 uppercase">Nombre: <span className="font-normal normal-case">{mascota}</span></p>
