@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import Paciente from "./paciente.jsx"
+import { useEffect } from "react";
 
 function ListadoPaciente({pacientes, setPaciente, eliminarPaciente}){
     
@@ -23,8 +23,8 @@ useEffect(()=>{
          ))}
          {pacientes.length===0 ? <>
             <h2 className="font-black text-center text-2xl">No hay pacientes</h2>
-            <p className="text-center text-xl mt-5">Comienza agregando {""} <span className="font-bold text-indigo-600">y aparecerán en este lugar.</span></p>
-         </> : ''}
+            <p className="text-center text-xl mt-5">Comienza agregando pacientes {""} <span className="font-bold text-indigo-600">y aparecerán en este lugar.</span></p>
+         </> : null}
         </div>
 )
 }
